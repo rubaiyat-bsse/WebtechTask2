@@ -512,7 +512,7 @@ curl -i http://127.0.0.1:8000/members/1
 
 `requirements.in` declares direct dependencies. `requirements.txt` locks exact versions, transitive dependencies and SHA-256 package hashes. Installing with `--require-hashes` checks the downloaded artifacts against that lock.
 
-The application itself imports Pydantic directly, so it is declared explicitly rather than relying only on FastAPI's dependency.
+The application imports Pydantic and Starlette directly, so both are declared explicitly rather than relying only on FastAPI's dependencies.
 
 To intentionally update the lock, use a separate tools environment so build/audit tools do not become application dependencies:
 
@@ -559,6 +559,8 @@ The repository link and meaningful commit history are submission steps for the s
 
 OpenAI Codex assisted with implementing the FastAPI backend, designing automated tests and writing this explanation. The implementation was guided by the professor's supplied slides and checked against official framework documentation.
 
-Verification performed includes the 60 automated cases described above and installation from the hash-locked dependency file in a clean virtual environment. The automated cases check actual state after changes and failed operations, not just response status codes.
+Verification performed includes the 60 automated cases described above, installation from the hash-locked dependency file in a clean virtual environment, and real HTTP requests to a temporary Uvicorn server for both CRUD lifecycles and failure paths. OpenAPI references were also checked. The automated cases check actual state after changes and failed operations, not just response status codes.
+
+The locked dependencies were checked with pip-audit on November 25, 2026; it reported no known vulnerabilities. This is a dated audit result, not a guarantee about future advisories.
 
 The student should review the source, rerun the tests locally, and be able to explain the submitted code and design decisions. AI assistance does not substitute for that understanding.

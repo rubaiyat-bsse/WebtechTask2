@@ -1,6 +1,7 @@
 # Application runtime
 fastapi
 pydantic
+starlette
 uvicorn
 # HTTP integration tests
 httpx2
