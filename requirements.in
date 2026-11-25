@@ -1,0 +1,7 @@
+# Application runtime
+fastapi
+pydantic
+uvicorn
+# HTTP integration tests
+httpx2
+pytest
